@@ -58,6 +58,7 @@ class EntityOutput extends HTMLElement {
     onMessage({ detail,entity }) {        
         let d = JSON.parse(detail.message);
 
+        // skip this if you just want to build html with keys eg: <li>${d.FirstName}</li> 
         let e = [];
         for (const [key, value] of Object.entries(d)) {
             e.push(`<span>${key}: ${value}</span>`);
@@ -69,6 +70,8 @@ class EntityOutput extends HTMLElement {
 
         this.innerHTML = `<ul>${output}</ul>`;
 
+        // or this.innerHTML = `<ul><li>${d.FirstName}</li></ul>`;
+        
     }
 
 }
